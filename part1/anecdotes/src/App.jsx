@@ -14,7 +14,13 @@ const App = () => {
 
   const [selected, setSelected] = useState(0);
 
-  return <div>{anecdotes[selected]}</div>;
+  return (
+    <div>
+      {anecdotes[selected]}
+      <br />
+      <button>next anecdote</button>
+    </div>
+  );
 };
 
 export default App;
