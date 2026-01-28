@@ -1,4 +1,3 @@
-import { set } from "mongoose";
 import { useState } from "react";
 
 const Button = ({ onClick, text }) => {
@@ -12,29 +11,29 @@ const App = () => {
   const [bad, setBad] = useState(0);
 
   const handleGood = () => {
-    // console.log("dididi");
     setGood(good + 1);
   };
 
   const handleNeutral = () => {
-    // console.log("neutral");
     setNeutral(neutral + 1);
   };
 
   const handleBad = () => {
-    // console.log("booooo");
     setBad(bad + 1);
   };
 
   return (
     <>
       <h1>give feedback</h1>
-      {/* buttons */}
       <Button onClick={handleGood} text="good" />
       <Button onClick={handleNeutral} text="neutral" />
       <Button onClick={handleBad} text="bad" />
       <h1>statistics</h1>
-      {/* good, neutral, bad */}
+      <div>
+        <p>good {good}</p>
+        <p>neutral {neutral}</p>
+        <p>bad {bad}</p>
+      </div>
     </>
   );
 };
