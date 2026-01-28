@@ -16,11 +16,17 @@ const App = () => {
     setGood(good + 1);
   };
 
+  const handleNeutral = () => {
+    // console.log("neutral");
+    setNeutral(neutral + 1);
+  };
+
   return (
     <>
       <h1>give feedback</h1>
       {/* buttons */}
       <Button onClick={handleGood} text="good" />
+      <Button onClick={handleNeutral} text="neutral" />
       <h1>statistics</h1>
       {/* good, neutral, bad */}
     </>
