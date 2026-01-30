@@ -33,7 +33,7 @@ const App = () => {
   return (
     <div>
       {anecdotes[selected]}
-      <Votes votes={votes} />
+      <Votes votes={votes[selected]} />
       <Button onClick={handleVote} text="vote" />
       <Button onClick={handleRandom} text="next anecdote" />
     </div>
