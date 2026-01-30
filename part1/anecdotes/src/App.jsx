@@ -43,6 +43,7 @@ const App = () => {
       <Button onClick={handleRandom} text="next anecdote" />
       <h1>Anecdote with most votes</h1>
       {anecdotes[indexOfMax]}
+      <Votes votes={votes[indexOfMax]} />
     </div>
   );
 };
