@@ -32,10 +32,12 @@ const App = () => {
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
       <Votes votes={votes[selected]} />
       <Button onClick={handleVote} text="vote" />
       <Button onClick={handleRandom} text="next anecdote" />
+      <h1>Anecdote with most votes</h1>
     </div>
   );
 };
