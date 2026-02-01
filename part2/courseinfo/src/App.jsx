@@ -21,18 +21,15 @@ const Total = (props) => (
 );
 
 const Course = (props) => {
+  const total = props.course.parts.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.exercises;
+  }, 0);
+
   return (
     <>
       <Header course={props.course.name} />
       <Content parts={props.course.parts} />
-      <Total
-        total={
-          props.course.parts[0].exercises +
-          props.course.parts[1].exercises +
-          props.course.parts[2].exercises +
-          props.course.parts[3].exercises
-        }
-      />
+      <Total total={total} />
     </>
   );
 };
