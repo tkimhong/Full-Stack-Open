@@ -1,4 +1,4 @@
-const Header = (props) => <h1>{props.course}</h1>;
+const Header = (props) => <h2>{props.course}</h2>;
 
 const Content = (props) => (
   <div>
@@ -82,6 +82,7 @@ const App = () => {
 
   return (
     <>
+      <h1>Web development curriculum</h1>
       <Course course={courses[0]} />
       <Course course={courses[1]} />
     </>
