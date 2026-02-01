@@ -16,6 +16,10 @@ const Part = (props) => (
 
 const Total = (props) => <p>Number of exercises {props.total}</p>;
 
+const Course = (props) => {
+  return <Header course={props.course.name} />;
+};
+
 const App = () => {
   const course = {
     id: 1,
