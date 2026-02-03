@@ -32,6 +32,9 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
+      {persons.map((person) => (
+        <p key={person.id}>{person.name}</p>
+      ))}
     </div>
   );
 };
