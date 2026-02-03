@@ -17,22 +17,12 @@ const App = () => {
 
     const nameObject = {
       name: newName,
+      number: newNumber,
       id: String(persons.length + 1),
     };
 
     setPersons(persons.concat(nameObject));
     setNewName("");
-  };
-
-  const addNumber = (event) => {
-    event.preventDefault();
-
-    const numberObject = {
-      number: newNumber,
-    };
-
-    setNewNumber(persons.concat(numberObject));
-    setNewNumber("");
   };
 
   const handleNameChange = (event) => {
