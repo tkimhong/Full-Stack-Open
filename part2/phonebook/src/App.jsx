@@ -3,6 +3,7 @@ import { useState } from "react";
 const App = () => {
   const [persons, setPersons] = useState([{ name: "Arto Hellas" }]);
   const [newName, setNewName] = useState("");
+  const [newNumber, setNewNumber] = useState("");
 
   const addName = (event) => {
     event.preventDefault();
@@ -42,7 +43,6 @@ const App = () => {
           <button type="submit">add</button>
         </div>
       </form>
-
       <h2>Numbers</h2>
       {persons.map((person) => (
         <p key={person.id}>{person.name}</p>
