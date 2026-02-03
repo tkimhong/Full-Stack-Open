@@ -24,6 +24,17 @@ const App = () => {
     setNewName("");
   };
 
+  const addNumber = (event) => {
+    event.preventDefault();
+
+    const numberObject = {
+      number: newNumber,
+    };
+
+    setNewNumber(persons.concat(numberObject));
+    setNewNumber("");
+  };
+
   const handleNameChange = (event) => {
     // console.log(event.target.value);
     setNewName(event.target.value);
