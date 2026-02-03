@@ -45,6 +45,10 @@ const App = () => {
     setFilter(event.target.value);
   };
 
+  const personsToShow = persons.filter((person) =>
+    person.name.toLowerCase().includes(filter.toLowerCase()),
+  );
+
   return (
     <div>
       <h2>Phonebook</h2>
