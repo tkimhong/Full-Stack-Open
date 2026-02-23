@@ -39,6 +39,14 @@ const App = () => {
     });
   };
 
+  const deleteName = (name, id) => {
+    if (window.confirm(`Delete ${name} ?`)) {
+      personService
+        .deleteObject(id)
+        .then(() => setPersons(persons.filter((person) => person.id != id)));
+    }
+  };
+
   const handleNameChange = (event) => {
     // console.log(event.target.value);
     setNewName(event.target.value);
