@@ -29,12 +29,14 @@ const App = () => {
     const nameObject = {
       name: newName,
       number: newNumber,
-      id: String(persons.length + 1),
+      // id: String(persons.length + 1),
     };
 
-    setPersons(persons.concat(nameObject));
-    setNewName("");
-    setNewNumber("");
+    axios.post("http://localhost:3001/persons", nameObject).then((response) => {
+      setPersons(persons.concat(response.data));
+      setNewName("");
+      setNewNumber("");
+    });
   };
 
   const handleNameChange = (event) => {
