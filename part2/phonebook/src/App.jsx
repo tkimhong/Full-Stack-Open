@@ -22,7 +22,9 @@ const App = () => {
     // Validate if name already exists
     const hasName = persons.some((person) => person.name === newName);
     if (hasName) {
-      window.alert(`${newName} is already added to phonebook`);
+      window.confirm(
+        `${newName} is already added to phonebook, replace the old number with a new one?`,
+      );
       return;
     }
 
