@@ -22,9 +22,29 @@ const App = () => {
     // Validate if name already exists
     const hasName = persons.some((person) => person.name === newName);
     if (hasName) {
-      window.confirm(
+      const confirmation = window.confirm(
         `${newName} is already added to phonebook, replace the old number with a new one?`,
       );
+
+      if (confirmation) {
+        const existingPerson = persons.find(
+          (person) => person.name === newName,
+        );
+        const updatedPerson = { ...existingPerson, number: newNumber };
+
+        personService
+          .update(existingPerson.id, updatedPerson)
+          .then((returnedPerson) => {
+            setPersons(
+              persons.map((person) =>
+                person.id !== existingPerson.id ? person : returnedPerson,
+              ),
+            );
+            setNewName("");
+            setNewNumber("");
+          });
+      }
+
       return;
     }
 
