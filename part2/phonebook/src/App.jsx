@@ -45,6 +45,19 @@ const App = () => {
             );
             setNewName("");
             setNewNumber("");
+            setSuccessMessage(`Updated ${returnedPerson.name}`);
+            setTimeout(() => {
+              setSuccessMessage(null);
+            }, 5000);
+          })
+          .catch((error) => {
+            setErrorMessage(
+              `Information of ${existingPerson.name} has already been removed from server`,
+            );
+            setTimeout(() => {
+              setErrorMessage(null);
+            }, 5000);
+            setPersons(persons.filter((p) => p.id !== existingPerson.id));
           });
       }
 
