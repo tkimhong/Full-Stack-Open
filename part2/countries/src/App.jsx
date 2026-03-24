@@ -27,6 +27,15 @@ const App = () => {
         find countries{" "}
         <input value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
+      <div>
+        {countriesToShow.length > 10 ? (
+          <p>Too many matches, specify another filter</p>
+        ) : (
+          countriesToShow.map((country) => {
+            return <div key={country.name.common}>{country.name.common}</div>;
+          })
+        )}
+      </div>
     </div>
   );
 };
