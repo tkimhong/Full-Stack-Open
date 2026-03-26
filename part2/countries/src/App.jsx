@@ -21,6 +21,8 @@ const App = () => {
   console.log("search:", search);
   console.log("countriesToShow:", countriesToShow);
 
+  const country = countriesToShow.length === 1 ? countriesToShow[0] : null;
+
   return (
     <div>
       <div>
