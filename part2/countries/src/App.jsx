@@ -4,6 +4,7 @@ import axios from "axios";
 const App = () => {
   const [search, setSearch] = useState("");
   const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
   useEffect(() => {
     axios
