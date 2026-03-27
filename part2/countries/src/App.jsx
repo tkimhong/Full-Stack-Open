@@ -25,6 +25,12 @@ const App = () => {
 
     if (countryToShow && countryToShow.capital) {
       const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+      console.log(
+        "Fetching weather for:",
+        countryToShow.capital[0],
+        "API key:",
+        apiKey,
+      );
       axios
         .get(
           `https://api.openweathermap.org/data/2.5/weather?q=${countryToShow.capital[0]}&appid=${apiKey}&units=metric`,
@@ -72,6 +78,17 @@ const App = () => {
               src={selectedCountry.flags.png}
               alt={selectedCountry.name.common}
             />
+            {weather && (
+              <div>
+                <h3>Weather in {selectedCountry.capital[0]}</h3>
+                <p>Temperature {weather.main.temp} Celsius</p>
+                <img
+                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                  alt={weather.weather[0].description}
+                />
+                <p>Wind {weather.wind.speed} m/s</p>
+              </div>
+            )}
           </div>
         ) : countriesToShow.length === 1 ? (
           // exactly 1 match, automatically show details
@@ -87,6 +104,17 @@ const App = () => {
               ))}
             </ul>
             <img src={country.flags.png} alt={country.name.common} />
+            {weather && (
+              <div>
+                <h3>Weather in {country.capital[0]}</h3>
+                <p>Temperature {weather.main.temp} Celsius</p>
+                <img
+                  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                  alt={weather.weather[0].description}
+                />
+                <p>Wind {weather.wind.speed} m/s</p>
+              </div>
+            )}
           </div>
         ) : (
           // otherwise show list with "Show" buttons
