@@ -31,9 +31,29 @@ const App = () => {
         <input value={search} onChange={(e) => setSearch(e.target.value)} />
       </div>
       <div>
+        {/* more than 10 matches, show too many matches */}
         {countriesToShow.length > 10 ? (
           <p>Too many matches, specify another filter</p>
+        ) : selectedCountry ? (
+          // user selected a country, show full details
+          <div>
+            <h1>{selectedCountry.name.common}</h1>
+            <p>Capital {selectedCountry.capital}</p>
+            <p>Area {selectedCountry.area}</p>
+
+            <h3>Languages:</h3>
+            <ul>
+              {Object.values(selectedCountry.languages).map((lang) => (
+                <li key={lang}>{lang}</li>
+              ))}
+            </ul>
+            <img
+              src={selectedCountry.flags.png}
+              alt={selectedCountry.name.common}
+            />
+          </div>
         ) : countriesToShow.length === 1 ? (
+          // exactly 1 match, automatically show details
           <div>
             <h1>{country.name.common}</h1>
             <p>Capital {country.capital}</p>
@@ -48,6 +68,7 @@ const App = () => {
             <img src={country.flags.png} alt={country.name.common} />
           </div>
         ) : (
+          // otherwise show list with "Show" buttons
           countriesToShow.map((country) => {
             return (
               <div key={country.name.common}>
