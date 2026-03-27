@@ -15,6 +15,26 @@ const App = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const filtered = countries.filter((country) =>
+      country.name.common.toLowerCase().includes(search.toLowerCase()),
+    );
+
+    const countryToShow =
+      selectedCountry || (filtered.length === 1 ? filtered[0] : null);
+
+    if (countryToShow && countryToShow.capital) {
+      const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${countryToShow.capital[0]}&appid=${apiKey}&units=metric`,
+        )
+        .then((response) => {
+          setWeather(response.data);
+        });
+    }
+  }, [selectedCountry, countries, search]);
+
   const countriesToShow = countries.filter((country) => {
     return country.name.common.toLowerCase().includes(search.toLowerCase());
   });
