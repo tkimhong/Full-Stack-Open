@@ -51,7 +51,10 @@ const App = () => {
           countriesToShow.map((country) => {
             return (
               <div key={country.name.common}>
-                {country.name.common} <button>Show</button>
+                {country.name.common}{" "}
+                <button onClick={() => setSelectedCountry(country)}>
+                  Show
+                </button>
               </div>
             );
           })
