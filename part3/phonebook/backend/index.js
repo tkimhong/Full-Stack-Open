@@ -92,7 +92,7 @@ app.get("/info", (request, response) => {
 });
 
 // For serving SPA (React)
-app.get("*", (request, response) => {
+app.get("/{*splat}", (request, response) => {
   response.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
