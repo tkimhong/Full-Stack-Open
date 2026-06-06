@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const path = require("path"); // for catch-all route
 const app = express();
 
 app.use(express.json());
@@ -11,6 +12,8 @@ morgan.token("body", (request, response) => {
 app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms :body"),
 );
+
+app.use(express.static("dist"));
 
 let persons = [
   {
@@ -86,6 +89,11 @@ app.get("/info", (request, response) => {
     `<p>Phonebook has info for ${persons.length} people</p>
     <p>${new Date()}</p>`,
   );
+});
+
+// For serving SPA (React)
+app.get("*", (request, response) => {
+  response.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 const PORT = process.env.PORT || 3001;
