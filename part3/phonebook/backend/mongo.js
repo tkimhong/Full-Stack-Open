@@ -19,19 +19,20 @@ const Person = mongoose.model("Person", personSchema);
 
 const person = new Person({ name, phone });
 
-// TODO read from phonebook
 if (process.argv.length < 4) {
   // console.log("give password as argument");
+  console.log("phonebook:");
   Person.find({}).then((result) => {
     result.forEach((person) => {
-      console.log(person);
+      console.log(person.name, person.phone);
     });
     mongoose.connection.close();
   });
   // process.exit(1);
 }
 
-person.save().then((result) => {
+/* person.save().then((result) => {
   console.log(`added ${name} number ${phone} to phonebook`);
   mongoose.connection.close();
 });
+ */
