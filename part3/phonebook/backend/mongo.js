@@ -19,20 +19,20 @@ const Person = mongoose.model("Person", personSchema);
 
 const person = new Person({ name, phone });
 
-if (process.argv.length < 4) {
-  // console.log("give password as argument");
-  console.log("phonebook:");
+if (process.argv.length === 3) {
+  // Password only -> fetch and list all
   Person.find({}).then((result) => {
+    console.log("phonebook:");
     result.forEach((person) => {
       console.log(person.name, person.phone);
     });
     mongoose.connection.close();
   });
   // process.exit(1);
+} else {
+  // Name and phone given -> add new entry
+  person.save().then((result) => {
+    console.log(`added ${name} number ${phone} to phonebook`);
+    mongoose.connection.close();
+  });
 }
-
-/* person.save().then((result) => {
-  console.log(`added ${name} number ${phone} to phonebook`);
-  mongoose.connection.close();
-});
- */
