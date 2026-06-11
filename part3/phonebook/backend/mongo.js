@@ -17,11 +17,7 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model("Person", personSchema);
 
-// Inaccessible anyway (need to destructure this object)
-/* const person = new Person({
-  name: "Hong Daddy",
-  phone: "016126629",
-}); */
+const person = new Person({ name, phone });
 
 // TODO read from phonebook
 if (process.argv.length < 4) {
@@ -35,7 +31,7 @@ if (process.argv.length < 4) {
   // process.exit(1);
 }
 
-/* person.save().then((result) => {
+person.save().then((result) => {
   console.log(`added ${name} number ${phone} to phonebook`);
   mongoose.connection.close();
-}); */
+});
