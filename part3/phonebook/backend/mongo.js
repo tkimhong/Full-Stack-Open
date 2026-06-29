@@ -4,8 +4,6 @@ const password = process.argv[2];
 const name = process.argv[3];
 const phone = process.argv[4];
 
-const url = `mongodb+srv://fullstack:${password}@cluster0.6wcma9a.mongodb.net/phonebook?appName=Cluster0`;
-
 mongoose.set("strictQuery", false);
 
 mongoose.connect(url, { family: 4 });

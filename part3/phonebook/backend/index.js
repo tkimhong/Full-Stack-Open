@@ -1,5 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
+const Person = require("./models/person");
+
 const path = require("path"); // for catch-all route
 const app = express();
 
@@ -96,7 +99,7 @@ app.get("/{*splat}", (request, response) => {
   response.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
