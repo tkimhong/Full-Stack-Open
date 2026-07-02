@@ -62,6 +62,7 @@ app.delete("/api/persons/:id", (request, response) => {
 
 const generateId = () => String(Math.floor(Math.random() * 1000000));
 
+// ! TODO
 app.post("/api/persons", (request, response) => {
   const body = request.body;
 
@@ -73,15 +74,18 @@ app.post("/api/persons", (request, response) => {
     return response.status(400).json({ error: "name must be unique" });
   }
 
-  const person = {
+  const person = new Person({
     name: body.name,
     number: body.number,
-    id: generateId(),
-  };
+    // id: generateId(),
+  });
 
-  persons = persons.concat(person);
+  // persons = persons.concat(person);
+  person.save().then((savedPerson) => {
+    response.json(person);
+  });
 
-  response.json(person);
+  // response.json(person);
 });
 
 app.get("/info", (request, response) => {
