@@ -54,15 +54,13 @@ app.get("/api/persons/:id", (request, response) => {
 });
 
 app.delete("/api/persons/:id", (request, response) => {
-  const id = request.params.id;
-  persons = persons.filter((person) => person.id !== id);
-
-  response.status(204).end();
+  Person.findByIdAndDelete(request.params.id)
+    .then((result) => {
+      response.status(204).end();
+    })
+    .catch((error) => next(error));
 });
 
-const generateId = () => String(Math.floor(Math.random() * 1000000));
-
-// ! TODO
 app.post("/api/persons", (request, response) => {
   const body = request.body;
 
@@ -77,15 +75,11 @@ app.post("/api/persons", (request, response) => {
   const person = new Person({
     name: body.name,
     number: body.number,
-    // id: generateId(),
   });
 
-  // persons = persons.concat(person);
   person.save().then((savedPerson) => {
     response.json(person);
   });
-
-  // response.json(person);
 });
 
 app.get("/info", (request, response) => {
