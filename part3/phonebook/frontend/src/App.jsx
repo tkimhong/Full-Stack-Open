@@ -70,15 +70,20 @@ const App = () => {
       // id: String(persons.length + 1),
     };
 
-    personService.create(nameObject).then((returnedPerson) => {
-      setPersons(persons.concat(returnedPerson));
-      setNewName("");
-      setNewNumber("");
-      setSuccessMessage(`Added ${returnedPerson.name}`);
-      setTimeout(() => {
-        setSuccessMessage(null);
-      }, 5000);
-    });
+    personService
+      .create(nameObject)
+      .then((returnedPerson) => {
+        setPersons(persons.concat(returnedPerson));
+        setNewName("");
+        setNewNumber("");
+        setSuccessMessage(`Added ${returnedPerson.name}`);
+        setTimeout(() => {
+          setSuccessMessage(null);
+        }, 5000);
+      })
+      .catch((error) => {
+        setErrorMessage(error.response.data.error);
+      });
   };
 
   const deleteName = (name, id) => {
@@ -109,7 +114,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={successMessage} errorMessaage={errorMessage} />
+      <Notification message={successMessage} errorMessage={errorMessage} />
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
       <h3>Add a new</h3>
       <PersonForm
