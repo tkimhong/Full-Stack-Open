@@ -50,7 +50,7 @@ const App = () => {
               setSuccessMessage(null);
             }, 5000);
           })
-          .catch((error) => {
+          .catch(() => {
             setErrorMessage(
               `Information of ${existingPerson.name} has already been removed from server`,
             );
